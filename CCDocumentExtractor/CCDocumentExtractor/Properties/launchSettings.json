@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "CCDocumentExtractor": {
+      "commandName": "Project"
+    },
+    "WithParams": {
+      "commandName": "Project",
+      "commandLineArgs": "1 NegStat adisreg_dph_Documents id documentData 4050DDC7-0DF5-4E9D-A91F-558CD7573713 \"d:\\MegaSync\\MEGAsync\\CC\\TEST\\DPHRegistrace\\11084791\\adisreg_2024-05-07.xml\""
+    }
+  }
+}
