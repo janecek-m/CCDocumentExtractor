@@ -10,8 +10,6 @@ namespace CCDocumentExtractor
         {
             RunAsDBFileExporter("User ID=;PASSWORD=;Data Source=93.185.107.65", args);
 
-            Console.WriteLine("Pro ukonceni zmackni klavesu.");
-            Console.ReadKey();
         }
 
 
