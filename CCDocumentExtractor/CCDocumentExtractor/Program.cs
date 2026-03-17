@@ -1,4 +1,6 @@
-﻿using DBManager.DataAccessManager;
+﻿using CreditFramework.CreditApplication.ApplicationConfiguration;
+using DBManager.DataAccessManager;
+using System.Configuration;
 using System.Data;
 using System.Transactions;
 
@@ -8,8 +10,12 @@ namespace CCDocumentExtractor
     {
         static void Main(string[] args)
         {
-            RunAsDBFileExporter("User ID=;PASSWORD=;Data Source=93.185.107.65", args);
+            // Accessing values using the ConfigurationManager
+            string dbUser = ConfigurationManager.AppSettings["DB_User_ID"];
+            string dbPass = ConfigurationManager.AppSettings["DB_User_Password"];
+            string dbSource = ConfigurationManager.AppSettings["DB_DataSource"];
 
+            RunAsDBFileExporter($"User ID={dbUser};PASSWORD={dbPass};Data Source={dbSource}", args);
         }
 
 
