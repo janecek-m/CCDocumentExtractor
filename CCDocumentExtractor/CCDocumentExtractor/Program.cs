@@ -1,5 +1,6 @@
 ﻿using CreditFramework.CreditApplication.ApplicationConfiguration;
 using DBManager.DataAccessManager;
+using Microsoft.Extensions.Configuration;
 using System.Configuration;
 using System.Data;
 using System.Transactions;
@@ -10,10 +11,14 @@ namespace CCDocumentExtractor
     {
         static void Main(string[] args)
         {
-            // Accessing values using the ConfigurationManager
-            string dbUser = ConfigurationManager.AppSettings["DB_User_ID"];
-            string dbPass = ConfigurationManager.AppSettings["DB_User_Password"];
-            string dbSource = ConfigurationManager.AppSettings["DB_DataSource"];
+            IConfiguration config = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .Build();
+
+            string dbUser = config["DatabaseSettings:UserID"];
+            string dbPass = config["DatabaseSettings:Password"];
+            string dbSource = config["DatabaseSettings:DataSource"];
 
             RunAsDBFileExporter($"User ID={dbUser};PASSWORD={dbPass};Data Source={dbSource}", args);
         }
